@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D rb2d;
 
 
+	public GameObject AttackHitbox;
+
+
 	// Use this for initialization
 	void Awake () 
 	{
@@ -66,6 +69,11 @@ public class PlayerController : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	void Attack()
+	{
+		Instantiate(transform.position, Quaternion.identity, AttackHitbox);
 	}
 
 }
