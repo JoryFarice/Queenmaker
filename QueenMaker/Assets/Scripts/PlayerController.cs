@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
 	public GameObject AttackHitbox;
 
+	private KeyCode attack = KeyCode.X;
 
 	// Use this for initialization
 	void Awake () 
@@ -29,11 +30,23 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		//on ground
 		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
+
+
+
+
+		//Button inputs
 		if (Input.GetButtonDown("Jump") && grounded)
 		{
 			jump = true;
+		}
+
+
+		if(Input.GetKeyDown(attack))
+		{
+			Attack();
 		}
 	}
 
@@ -73,7 +86,8 @@ public class PlayerController : MonoBehaviour
 
 	void Attack()
 	{
-		Instantiate(transform.position, Quaternion.identity, AttackHitbox);
+		AttackHitbox.SetActive(true);
+//		Instantiate(AttackHitbox, transform.position, Quaternion.identity);
 	}
 
 }
