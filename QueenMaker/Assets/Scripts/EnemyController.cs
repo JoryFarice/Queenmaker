@@ -3,13 +3,16 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+	public int enemyHealth = 100;
+
+
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		if (enemyHealth <= 0)
+		{
+			Destroy(this.gameObject);
+		}
 	}
 }
